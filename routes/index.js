@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-let crypto = require('crypto');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('abe83e20f730477984459fbf65e2bc82');
 
@@ -11,38 +9,7 @@ const newsapi = new NewsAPI('abe83e20f730477984459fbf65e2bc82');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/finds', function(req, res, next) 
-{    
-  newsapi.v2.everything({
-    sources:"ABC NEWS",
-    language: 'en',
-    sortBy: 'relevancy',
-    
-  }).then(response => {
-    console.log(response);
-    /*
-      {
-        status: "ok",
-        articles: [...]
-      }
-    */
-  });
 
-   
-});
-
-router.post('/find-news', function(req, res, next) 
-{    
-  newsapi.v2.topHeadlines({
-     category: req.body.searchValue ,
-      country:"in",
-    language: 'en',
-  }).then(response => {
-    console.log(response);
-  res.send(response);
-  });
-   
-});
 
 router.get('/home', function(req, res, next) 
 {    
