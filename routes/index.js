@@ -103,14 +103,94 @@ router.get('/health', function(req, res, next)
   });
    
 });
-router.post("/create-user", (req, res) => {
-  userController.create(req.body, (err, response) => {
-    if (err) throw err;
-    console.log(response);
-    res.send(response);
-  });
+
+
+router.get("/inter-business", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      category: "business",
+      language: "en"
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
 });
 
+router.get("/inter-sports", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      category: "sports",
+      language: "en"
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
+
+router.get("/inter-entertainment", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      category: "entertainment",
+      language: "en"
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
+router.get("/inter-science", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      category: "science",
+      language: "en"
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
+router.get("/inter-technology", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      category: "tetchnology",
+      language: "en"
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
+router.get("/inter-health", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      category: "health",
+      language: "en"
+     
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
+router.post('/search', function(req, res, next) 
+{    
+  newsapi.v2.topHeadlines({
+     q: req.body.searchValue ,
+      country:"in",
+    language: 'en',
+  }).then(response => {
+    console.log(response);
+  res.send(response);
+  });
+   
+});
 
 
 
