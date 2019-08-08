@@ -13,7 +13,8 @@ router.get("/home", function(req, res, next) {
     .topHeadlines({
       category: "general",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -26,7 +27,8 @@ router.get("/business", function(req, res, next) {
     .topHeadlines({
       category: "business",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -39,7 +41,8 @@ router.get("/sports", function(req, res, next) {
     .topHeadlines({
       category: "sports",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -52,7 +55,8 @@ router.get("/entertainment", function(req, res, next) {
     .topHeadlines({
       category: "entertainment",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -65,7 +69,8 @@ router.get("/science", function(req, res, next) {
     .topHeadlines({
       category: "science",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -78,7 +83,8 @@ router.get("/technology", function(req, res, next) {
     .topHeadlines({
       category: "technology",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -91,7 +97,8 @@ router.get("/health", function(req, res, next) {
     .topHeadlines({
       category: "health",
       language: "en",
-      country: "in"
+      country: "in",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -103,7 +110,8 @@ router.get("/inter-business", (req, res) => {
   newsapi.v2
     .topHeadlines({
       category: "business",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -115,7 +123,8 @@ router.get("/inter-sports", (req, res) => {
   newsapi.v2
     .topHeadlines({
       category: "sports",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -127,7 +136,8 @@ router.get("/inter-entertainment", (req, res) => {
   newsapi.v2
     .topHeadlines({
       category: "entertainment",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -139,7 +149,8 @@ router.get("/inter-science", (req, res) => {
   newsapi.v2
     .topHeadlines({
       category: "science",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -151,7 +162,8 @@ router.get("/inter-technology", (req, res) => {
   newsapi.v2
     .topHeadlines({
       category: "technology",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -163,7 +175,8 @@ router.get("/inter-health", (req, res) => {
   newsapi.v2
     .topHeadlines({
       category: "health",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
@@ -176,7 +189,8 @@ router.post("/search", function(req, res, next) {
     .topHeadlines({
       q: req.body.searchValue,
       country: "in",
-      language: "en"
+      language: "en",
+      pageSize:"100"
     })
     .then(response => {
       console.log(response);
