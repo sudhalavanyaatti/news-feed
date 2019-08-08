@@ -180,7 +180,7 @@ router.post("/search", function(req, res, next) {
     })
     .then(response => {
       console.log(response);
-      res.send(response);
+      res.send({ response: response });
     });
 });
 
