@@ -198,4 +198,32 @@ router.post("/search", function(req, res, next) {
     });
 });
 
+router.get("/find", function(req, res, next) {
+  newsapi.v2
+    .topHeadlines({
+      country: "in",
+      language: "en",
+      pageSize:"100"
+    })
+    .then(response => {
+      console.log(response);
+      res.send({ response: response });
+    });
+});
+// router.get("/search/:id", function(req, res, next) {
+//   newsapi.v2.everything({
+//     q: req.params.id,
+//     sources: 'bbc-news,the-verge',
+//     domains: 'bbc.co.uk, techcrunch.com',
+   
+//     language: 'en',
+//     sortBy: 'relevancy',
+//     page: 2
+//   })
+//     .then(response => {
+//       console.log("rrrrrrrrrrrr",  response);
+//       res.send({ response: response });
+//     });
+// });
+
 module.exports = router;
