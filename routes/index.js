@@ -14,7 +14,7 @@ router.get("/home", function(req, res, next) {
       category: "general",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -28,7 +28,7 @@ router.get("/business", function(req, res, next) {
       category: "business",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -42,7 +42,7 @@ router.get("/sports", function(req, res, next) {
       category: "sports",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -56,7 +56,7 @@ router.get("/entertainment", function(req, res, next) {
       category: "entertainment",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -70,7 +70,7 @@ router.get("/science", function(req, res, next) {
       category: "science",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -84,7 +84,7 @@ router.get("/technology", function(req, res, next) {
       category: "technology",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -98,7 +98,7 @@ router.get("/health", function(req, res, next) {
       category: "health",
       language: "en",
       country: "in",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -111,7 +111,7 @@ router.get("/inter-business", (req, res) => {
     .topHeadlines({
       category: "business",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -124,7 +124,7 @@ router.get("/inter-sports", (req, res) => {
     .topHeadlines({
       category: "sports",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -137,7 +137,7 @@ router.get("/inter-entertainment", (req, res) => {
     .topHeadlines({
       category: "entertainment",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -150,7 +150,7 @@ router.get("/inter-science", (req, res) => {
     .topHeadlines({
       category: "science",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -163,7 +163,7 @@ router.get("/inter-technology", (req, res) => {
     .topHeadlines({
       category: "technology",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -176,7 +176,7 @@ router.get("/inter-health", (req, res) => {
     .topHeadlines({
       category: "health",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -190,7 +190,7 @@ router.post("/search", function(req, res, next) {
       q: req.body.searchValue,
       country: "in",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
@@ -203,27 +203,40 @@ router.get("/find", function(req, res, next) {
     .topHeadlines({
       country: "in",
       language: "en",
-      pageSize:"100"
+      pageSize: "100"
     })
     .then(response => {
       console.log(response);
       res.send({ response: response });
     });
 });
-// router.get("/search/:id", function(req, res, next) {
-//   newsapi.v2.everything({
-//     q: req.params.id,
-//     sources: 'bbc-news,the-verge',
-//     domains: 'bbc.co.uk, techcrunch.com',
-   
-//     language: 'en',
-//     sortBy: 'relevancy',
-//     page: 2
-//   })
-//     .then(response => {
-//       console.log("rrrrrrrrrrrr",  response);
-//       res.send({ response: response });
-//     });
-// });
+
+router.get("/news/:id", function(req, res, next) {
+  newsapi.v2
+    .topHeadlines({
+      sources:req.params.id,
+      language: 'en',
+      
+      pageSize: "100"
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
+router.get("/sources", function(req, res, next) {
+ 
+  newsapi.v2.sources({
+
+    language: 'en',
+
+    
+  }).then(response => {
+      console.log(response);
+      res.send(response);
+    });
+});
+
 
 module.exports = router;
